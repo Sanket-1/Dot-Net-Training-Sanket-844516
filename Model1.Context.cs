@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace userdetailshandson
+namespace adddatatosql
 {
     using System;
     using System.Data.Entity;
@@ -25,7 +25,6 @@ namespace userdetailshandson
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<LOGININFO> LOGININFOes { get; set; }
-        public virtual DbSet<UserDetail> UserDetails { get; set; }
+        public virtual DbSet<WEBAPP> WEBAPPs { get; set; }
     }
 }
