@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace adddatatosql
+namespace codechallenge
 {
     using System;
     using System.Data.Entity;
@@ -25,6 +25,6 @@ namespace adddatatosql
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<WEBAPP> WEBAPPs { get; set; }
+        public virtual DbSet<ATM> ATMs { get; set; }
     }
 }
