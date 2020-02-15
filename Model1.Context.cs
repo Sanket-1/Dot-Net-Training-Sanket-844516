@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace codechallenge
+namespace TRM
 {
     using System;
     using System.Data.Entity;
@@ -25,6 +25,6 @@ namespace codechallenge
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<ATM> ATMs { get; set; }
+        public virtual DbSet<TRM> TRMs { get; set; }
     }
 }
