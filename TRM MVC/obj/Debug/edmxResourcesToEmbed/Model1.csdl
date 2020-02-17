@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ASSESMENTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="TRM">
+    <Key>
+      <PropertyRef Name="REQUESTNAME" />
+    </Key>
+    <Property Name="REQUESTNAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SKILL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="STARTDATE" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ENDDATE" Type="DateTime" Nullable="false" Precision="0" />
+  </EntityType>
+  <EntityContainer Name="ASSESMENTEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="TRMs" EntityType="Self.TRM" />
+  </EntityContainer>
+</Schema>

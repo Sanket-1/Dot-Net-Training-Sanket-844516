@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ASSESMENTModelStoreContainer" CdmEntityContainer="ASSESMENTEntities">
+    <EntitySetMapping Name="TRMs">
+      <EntityTypeMapping TypeName="ASSESMENTModel.TRM">
+        <MappingFragment StoreEntitySet="TRM">
+          <ScalarProperty Name="REQUESTNAME" ColumnName="REQUESTNAME" />
+          <ScalarProperty Name="SKILL" ColumnName="SKILL" />
+          <ScalarProperty Name="STARTDATE" ColumnName="STARTDATE" />
+          <ScalarProperty Name="ENDDATE" ColumnName="ENDDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
