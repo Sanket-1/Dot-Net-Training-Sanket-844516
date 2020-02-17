@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ASSESMENTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="MAIL">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="password1" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MailDetails">
+    <Key>
+      <PropertyRef Name="MailID" />
+    </Key>
+    <Property Name="MailID" Type="int" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="MailForm" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Subject1" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="ReceiveDate" Type="date" Nullable="false" />
+    <Property Name="Messsage" Type="varchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_MailDetails_MAIL">
+    <End Role="MAIL" Type="Self.MAIL" Multiplicity="1" />
+    <End Role="MailDetails" Type="Self.MailDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MAIL">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="MailDetails">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ASSESMENTModelStoreContainer">
+    <EntitySet Name="MAIL" EntityType="Self.MAIL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MailDetails" EntityType="Self.MailDetails" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_MailDetails_MAIL" Association="Self.FK_MailDetails_MAIL">
+      <End Role="MAIL" EntitySet="MAIL" />
+      <End Role="MailDetails" EntitySet="MailDetails" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

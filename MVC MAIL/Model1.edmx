@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ASSESMENTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="MAIL">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="password1" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MailDetails">
+          <Key>
+            <PropertyRef Name="MailID" />
+          </Key>
+          <Property Name="MailID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="MailForm" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Subject1" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="ReceiveDate" Type="date" Nullable="false" />
+          <Property Name="Messsage" Type="varchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_MailDetails_MAIL">
+          <End Role="MAIL" Type="Self.MAIL" Multiplicity="1" />
+          <End Role="MailDetails" Type="Self.MailDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MAIL">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="MailDetails">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ASSESMENTModelStoreContainer">
+          <EntitySet Name="MAIL" EntityType="Self.MAIL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MailDetails" EntityType="Self.MailDetails" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_MailDetails_MAIL" Association="Self.FK_MailDetails_MAIL">
+            <End Role="MAIL" EntitySet="MAIL" />
+            <End Role="MailDetails" EntitySet="MailDetails" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ASSESMENTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="MAIL">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="MailDetails" Relationship="Self.FK_MailDetails_MAIL" FromRole="MAIL" ToRole="MailDetails" />
+        </EntityType>
+        <EntityType Name="MailDetail">
+          <Key>
+            <PropertyRef Name="MailID" />
+          </Key>
+          <Property Name="MailID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="MailForm" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Subject1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ReceiveDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Messsage" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="MAIL" Relationship="Self.FK_MailDetails_MAIL" FromRole="MailDetails" ToRole="MAIL" />
+        </EntityType>
+        <Association Name="FK_MailDetails_MAIL">
+          <End Role="MAIL" Type="Self.MAIL" Multiplicity="1" />
+          <End Role="MailDetails" Type="Self.MailDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MAIL">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="MailDetails">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ASSESMENTEntities3" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="MAILs" EntityType="Self.MAIL" />
+          <EntitySet Name="MailDetails" EntityType="Self.MailDetail" />
+          <AssociationSet Name="FK_MailDetails_MAIL" Association="Self.FK_MailDetails_MAIL">
+            <End Role="MAIL" EntitySet="MAILs" />
+            <End Role="MailDetails" EntitySet="MailDetails" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ASSESMENTModelStoreContainer" CdmEntityContainer="ASSESMENTEntities3">
+          <EntitySetMapping Name="MAILs">
+            <EntityTypeMapping TypeName="ASSESMENTModel.MAIL">
+              <MappingFragment StoreEntitySet="MAIL">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="password1" ColumnName="password1" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MailDetails">
+            <EntityTypeMapping TypeName="ASSESMENTModel.MailDetail">
+              <MappingFragment StoreEntitySet="MailDetails">
+                <ScalarProperty Name="MailID" ColumnName="MailID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="MailForm" ColumnName="MailForm" />
+                <ScalarProperty Name="Subject1" ColumnName="Subject1" />
+                <ScalarProperty Name="ReceiveDate" ColumnName="ReceiveDate" />
+                <ScalarProperty Name="Messsage" ColumnName="Messsage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

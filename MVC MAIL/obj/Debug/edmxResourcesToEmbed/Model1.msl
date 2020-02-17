@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ASSESMENTModelStoreContainer" CdmEntityContainer="ASSESMENTEntities3">
+    <EntitySetMapping Name="MAILs">
+      <EntityTypeMapping TypeName="ASSESMENTModel.MAIL">
+        <MappingFragment StoreEntitySet="MAIL">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="password1" ColumnName="password1" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MailDetails">
+      <EntityTypeMapping TypeName="ASSESMENTModel.MailDetail">
+        <MappingFragment StoreEntitySet="MailDetails">
+          <ScalarProperty Name="MailID" ColumnName="MailID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="MailForm" ColumnName="MailForm" />
+          <ScalarProperty Name="Subject1" ColumnName="Subject1" />
+          <ScalarProperty Name="ReceiveDate" ColumnName="ReceiveDate" />
+          <ScalarProperty Name="Messsage" ColumnName="Messsage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

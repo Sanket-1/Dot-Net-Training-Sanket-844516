@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ASSESMENTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="MAIL">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="Username" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="MailDetails" Relationship="Self.FK_MailDetails_MAIL" FromRole="MAIL" ToRole="MailDetails" />
+  </EntityType>
+  <EntityType Name="MailDetail">
+    <Key>
+      <PropertyRef Name="MailID" />
+    </Key>
+    <Property Name="MailID" Type="Int32" Nullable="false" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="MailForm" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Subject1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ReceiveDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Messsage" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="MAIL" Relationship="Self.FK_MailDetails_MAIL" FromRole="MailDetails" ToRole="MAIL" />
+  </EntityType>
+  <Association Name="FK_MailDetails_MAIL">
+    <End Role="MAIL" Type="Self.MAIL" Multiplicity="1" />
+    <End Role="MailDetails" Type="Self.MailDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MAIL">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="MailDetails">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ASSESMENTEntities3" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="MAILs" EntityType="Self.MAIL" />
+    <EntitySet Name="MailDetails" EntityType="Self.MailDetail" />
+    <AssociationSet Name="FK_MailDetails_MAIL" Association="Self.FK_MailDetails_MAIL">
+      <End Role="MAIL" EntitySet="MAILs" />
+      <End Role="MailDetails" EntitySet="MailDetails" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
