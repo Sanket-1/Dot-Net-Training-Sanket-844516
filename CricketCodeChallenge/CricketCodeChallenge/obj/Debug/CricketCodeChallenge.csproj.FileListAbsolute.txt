@@ -1,0 +1,7 @@
+C:\Users\Admin\source\repos\CricketCodeChallenge\CricketCodeChallenge\bin\Debug\CricketCodeChallenge.exe.config
+C:\Users\Admin\source\repos\CricketCodeChallenge\CricketCodeChallenge\bin\Debug\CricketCodeChallenge.exe
+C:\Users\Admin\source\repos\CricketCodeChallenge\CricketCodeChallenge\bin\Debug\CricketCodeChallenge.pdb
+C:\Users\Admin\source\repos\CricketCodeChallenge\CricketCodeChallenge\obj\Debug\CricketCodeChallenge.csprojResolveAssemblyReference.cache
+C:\Users\Admin\source\repos\CricketCodeChallenge\CricketCodeChallenge\obj\Debug\CricketCodeChallenge.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\CricketCodeChallenge\CricketCodeChallenge\obj\Debug\CricketCodeChallenge.exe
+C:\Users\Admin\source\repos\CricketCodeChallenge\CricketCodeChallenge\obj\Debug\CricketCodeChallenge.pdb
